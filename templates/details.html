@@ -1,0 +1,62 @@
+{% extends "new_layout.html" %}
+
+{% block heading %}
+    Book Details:
+{% endblock %}
+
+{% block body %}
+	<table class="table text-center">
+		<tr>
+			<th style="padding: 30px;">ISBN</th>
+			<td style="padding: 30px;">{{ res[0] }}</td>
+		</tr>
+		<tr>
+			<th style="padding: 30px;">Book</th>
+			<td style="padding: 30px;">{{ res[1] }}</td>
+		</tr>
+		<tr>
+			<th style="padding: 30px;">Author</th>
+			<td style="padding: 30px;">{{ res[2] }}</td>
+		</tr>
+		<tr>
+			<th style="padding: 30px;">Year</th>
+			<td style="padding: 30px;">{{ res[3] }}</td>
+		</tr>
+		<tr>
+			<th style="padding: 30px;">Goodreads Rating</th>
+			<td style="padding: 30px;">{{ rating }}</td>
+		</tr>
+		<tr>
+			<th style="padding: 30px;">Total Ratings</th>
+			<td style="padding: 30px;">{{ total }}</td>
+		</tr>
+	</table>
+	<form class="form-example" action="{{ url_for('review', isbn=res[0]) }}" method="post">
+    	<h6>Review this Book:</h6>
+    	<div class="form-group">
+	    	<label>Rating:</label>
+	    	<select class="form-control" name="rating">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Write a Review:</label>
+	        <textarea class="form-control" name="content" rows="4"></textarea>
+    	</div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+    <br/>
+    <div class="container">
+    	<ul class="list-group">
+    	{% for review in reviews %}
+    		<li class="list-group-item text-center m-3">
+				{{ review[2] }} rated it {{ review[0] }}&#9733; and said {{ review[1] }}
+    		</li>
+    	{% endfor %}
+    	</ul>
+    </div>
+{% endblock %}

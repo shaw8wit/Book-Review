@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Welcome {{ name }}
+{% endblock %}
+
+{% block body %}
+	<form class="form-example" action="{{ url_for('find') }}" method="post">
+    	<h6>Enter any/all of the book details to search:</h6>
+    	<div class="form-group">
+        	<input type="text" class="form-control" name="isbn" placeholder="Enter ISBN code">
+    	</div>
+    	<div class="form-group">
+        	<input type="text" class="form-control" name="name" placeholder="Enter Name of Book">
+    	</div>
+    	<div class="form-group">
+        	<input type="text" class="form-control" name="author" placeholder="Enter Name of Author">
+    	</div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <form action="{{ url_for('logout') }}" class="form-example">
+	    <button type="submit" class="btn btn-primary mt-2">Logout</button>
+	</form>
+{% endblock %}

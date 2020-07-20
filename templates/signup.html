@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Sign-up
+{% endblock %}
+
+{% block body %}
+    <form class="form-example" action="{{ url_for('login') }}" method="post">
+    	<div class="form-group">
+        	<input type="text" class="form-control" name="name" placeholder="Enter Your Username">
+    	</div>
+    	<div class="form-group">
+        	<input type="email" class="form-control" name="email" placeholder="Enter Your Email">
+    	</div>
+    	<div class="form-group">
+        	<input type="password" class="form-control" name="pwd" placeholder="Enter Your Password">
+    	</div>
+        <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+    <a href="/">LogIn instead?</a>
+{% endblock %}
